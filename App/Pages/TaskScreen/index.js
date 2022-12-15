@@ -17,6 +17,9 @@ export default TaskScreen = ({ navigation }) => {
   const { user } = useSelector((state) => state);
   const [dataTask, setDataTask] = React.useState([]);
 
+  console.log("user", user);
+  // user id => 639a73087a4f80caa602ffe0
+
   const handleAddTask = () => {
     navigation.navigate("TaskScreenAdd");
   };
@@ -28,10 +31,10 @@ export default TaskScreen = ({ navigation }) => {
         {
           dataSource: "Cluster0",
           database: "app_taskita",
-          collection: "task",
+          collection: "member",
           filter: {
             userId: user?.id,
-            active_date: moment(new Date()).format("DD/MM/YYYY"),
+            // active_date: moment(new Date()).format("DD/MM/YYYY"),
           },
         },
         {
@@ -69,7 +72,7 @@ export default TaskScreen = ({ navigation }) => {
         }}
       >
         <View>
-          <Text style={{ color: "#A85CA3", fontSize: 18 }}>Agitha</Text>
+          <Text style={{ color: "#A85CA3", fontSize: 18 }}>{user.nama}</Text>
         </View>
         <View>
           <Image source={ICNotif} />
